@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MainPage"
+             BackgroundColor="#ADD8E6">
+    
+
+    <VerticalStackLayout Padding="20">
+
+        <Label Text="Aplikacja pogodowa"
+               FontSize="26"
+               FontAttributes="Bold"
+               TextColor="DarkBlue"
+               HorizontalOptions="Center"/>
+
+        <Frame BackgroundColor="White" 
+               CornerRadius="10" 
+               Padding="5"
+               Margin="0,20,0,10">
+            <Entry x:Name="MiastoEntry"
+                   Placeholder="Wpisz miasto"
+                   FontSize="18"
+                   TextColor="Black"/>
+        </Frame>
+
+        <Button Text="Pobierz pogodę"
+                FontSize="18"
+                BackgroundColor="DodgerBlue"
+                TextColor="White"
+                CornerRadius="10"
+                Padding="10"
+                Clicked="OnWeatherButtonClicked"/>
+
+        <Label x:Name="WynikLabel"
+               Text="Tu pojawi się wynik"
+               FontSize="18"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               Margin="0,20,0,0"/>
+
+
+        <ListView x:Name="HistoriaListView" Margin="0,20,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding City}" Detail="{Binding Temperature, StringFormat='{0}°C, {1}', ConverterParameter={Binding Description}}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Image x:Name="IkonaPogody"
+       WidthRequest="100"
+       HeightRequest="100"
+       HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>
